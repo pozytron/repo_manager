@@ -1,3 +1,11 @@
+# Set Sleep to some value to see each step
+# Set Sleep to 0 to gain max speed :)
+function shortSleep() {
+    sleep 2
+}
+function mediumSleep() {
+    sleep 4
+}
 #  Renderuję nagłówek skryptu
 renderIntro
 
@@ -11,7 +19,7 @@ select repo in "${repos[@]}"; do
         break
         ;;
     "")
-        renderError "MUSISZ WYBRAĆ LICZBĘ Z ZAKRESU OD 1 DO ${#repos[@]}"
+        renderError "MUSISZ WYBRAĆ LICZBĘ Z ZAKRESU OD 1 DO ${#repos[@]}                  "
         continue
 
         ;;
@@ -21,39 +29,51 @@ select repo in "${repos[@]}"; do
     esac
 
 done
+cd repos
 
 #If everything is ok
 repoName=${currentGroup}_${repo}
-renderError "SSSSSSS"
 mkdir ${currentGroup}
 cd ${currentGroup}
 
 for user in "${users[@]}"; do
     renderHeader
     #If dir not exist
+    renderAlert "TWORZĘ KATALOG...                                                                        "
     if [ ! -d "$user" ]; then
-        # echo -e "${On_Blue} Making directory ${bg_selected} $user ${Color_Off}"
         renderDefault "TWORZĘ KATALOG $user "
         mkdir $user
     fi
-    # echo -e "${On_Blue} Entering directory ${bg_selected} $user ${Color_Off}"
-    renderDefault "PRZECHODZĘ DO KATALOGU $user "
-    cd $user
 
+    coloredEcho "mkdir or cd $user" Yellow
+    cd $user
+    shortSleep
+    renderHeader
+    renderAlert "POBIERAM FORK...                                                                         "
+    # timeout 10 echo " NEXT >> "
+    coloredEcho "git pull or git clone" Blue
+    coloredEcho "$user/$repoName" Blue
     #Clone if is not exist or pull if exist
     if [ ! -d "$repoName" ]; then
         git clone https://github.com/$user/$repoName.git
+
     else
         cd $repoName
-        renderDefault "POBIERAM $repoName ... OD $user"
         git pull
-
-        npm i
-        renderAlert "INSTALUJĘ NPM'em..."
-        cd ..
-        renderSuccess "GOTOWE !!!"
     fi
+    mediumSleep
+    s
+    # cd $repoName
+    renderHeader
+    renderAlert "INSTALUJĘ NPM'em...                                                                       "
+    npm i
+
+    mediumSleep
     cd ..
+    renderHeader
+    renderSuccess "GOTOWE !!!                                                                               "
+    cd ..
+    shortSleep
 done
 
 # Koniec :)
