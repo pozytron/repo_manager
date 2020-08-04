@@ -37,41 +37,53 @@ mkdir ${currentGroup}
 cd ${currentGroup}
 
 for user in "${users[@]}"; do
-    renderHeader
+    renderHeader $user
     #If dir not exist
-    renderAlert "TWORZĘ KATALOG...                                                                        "
+    renderInfo "TWORZĘ KATALOG...                                                                        "
+    renderLine
     if [ ! -d "$user" ]; then
-        renderDefault "TWORZĘ KATALOG $user "
+        coloredEcho "mkdir $repoName" Yellow
         mkdir $user
     fi
-
-    coloredEcho "mkdir or cd $user" Yellow
     cd $user
+    pwd
     shortSleep
-    renderHeader
-    renderAlert "POBIERAM FORK...                                                                         "
+    renderSuccess "GOTOWE !!!                                                                               "
+    shortSleep
+    renderHeader $user
+    renderInfo "POBIERAM FORK...                                                                         "
+    renderLine
     # timeout 10 echo " NEXT >> "
     coloredEcho "git pull or git clone" Blue
     coloredEcho "$user/$repoName" Blue
     #Clone if is not exist or pull if exist
+    pwd
     if [ ! -d "$repoName" ]; then
         git clone https://github.com/$user/$repoName.git
 
     else
-        cd $repoName
         git pull
     fi
     mediumSleep
-    s
-    # cd $repoName
-    renderHeader
-    renderAlert "INSTALUJĘ NPM'em...                                                                       "
-    npm i
-
-    mediumSleep
-    cd ..
-    renderHeader
     renderSuccess "GOTOWE !!!                                                                               "
+    shortSleep
+
+    cd $repoName
+    renderHeader $user
+    renderInfo "INSTALUJĘ NPM'em...                                                                       "
+    renderLine
+    coloredEcho "npm install" Green
+    npm i
+    pwd
+    mediumSleep
+    renderSuccess "GOTOWE !!!                                                                               "
+    shortSleep
+    cd ..
+    renderHeader $user
+    renderLine
+    renderSuccess "GOTOWE !!!                                                                               "
+    coloredEcho "$user/$repoName GOTOWE !!!" Green
+    cd ..
     cd ..
     shortSleep
 done

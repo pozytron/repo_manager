@@ -18,7 +18,7 @@ function renderHeader() {
     # echo "Your name is:" $NAME
     clear
     renderLine
-    renderInfo "       POZYTRON BASH TOOL                                   Based on Beniamin script     "
+    renderInfo "REPO DLA: $1                                         "
     renderLine
 }
 function renderFooter() {
