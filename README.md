@@ -24,17 +24,19 @@ Let them fork and create pull request to this repo.
 You can collect every pull request based on setup provided in `lib/config.sh`
 
 just confugure:
-* `Github logins`
-* `List of repo names`
-* `Group signature`
+
+- `Github logins`
+- `List of repo names`
+- `Group signature`
 
 ## How to use
 
-You need `make` installed. 
+You need `make` installed.
 
 Just run:
 
 `$ make && ./repo_manager_v_2.0.sh`
+![Demo](./media/demo.gif)
 
 # Development
 
