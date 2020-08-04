@@ -1,74 +1,47 @@
-# bash-project
+# Repo Manager
+
+Repo Manager for a lecrurer.
+
+Gather Exam Repo forks in recpective catalogs for each student.
+
+Run scripts on them, make batch installs, fire tests...
+
+... whatever you wish to hack time with it :)
+
+## Exam using forks
+
+Sey you have a `GROUP` with bunch of students that have github logins:
+
+`YaNusH`, `tomaSh`, `jesika`, `brajan12`,
+
+and an exam `EXAM` repo with signature:
+`GROUP_EXAM_REPO__00`
+
+Let them fork and create pull request to this repo.
+
+## Config
+
+You can collect every pull request based on setup provided in `src/config.sh`
+
+just `repo_manager.sh` and run
+
+`$ ./repo_manager.sh`
+
+## Based on
+
+### Lecturers and Mentors
+
+> Inspired by bash script [@beniaminrychter](https://github.com/beniaminrychter)
+
+... other contributions welcome :)
+
+### bash-project
 
 An example of how a larger bash script can be splitted into into multiple files
 
-## Main idea
+Checkout here:
+[https://github.com/zinovyev/bash-project](https://github.com/zinovyev/bash-project)
 
-Entrypoint [./src/main.sh](./src/main.sh):
+Kudos [@zinovyev](https://github.com/zinovyev) !
 
-```bash
-
-print_foo "foo"
-print_bar "bar"
-
-```
-
-Module #1 [./lib/print_bar.sh](./lib/print_bar.sh):
-
-```bash
-
-function print_bar() {
-  echo "bar: $1"
-}
-
-```
-
-Module #2 [./lib/print_foo.sh](./lib/print_foo.sh):
-
-```bash
-
-function print_foo() {
-  echo "foo: $1"
-}
-
-```
-
-Resulting file: [./target.sh](./target.sh):
-
-```bash
-
-#!/usr/bin/env bash
-
-function main() {
-
-  print_foo "foo"
-  print_bar "bar"
-
-}
-
-function print_bar() {
-  echo "bar: $1"
-}
-
-function print_foo() {
-  echo "foo: $1"
-}
-
-main $@
-
-```
-
-## Split
-
-1. Put the main part of your project into the [./src/main.sh](./src/main.sh) file. It will be the entrypoint for your script;
-2. Move all your function declarations into the modules under the `./lib` directory
-([./lib/print_bar.sh](./lib/print_bar.sh) and [./lib/print_foo.sh](./lib/print_foo.sh) in this example);
-3. Copy the content of the [Makefile](Makefile) to the root of your project;
-
-## Build
-
-1. Replace the value of the variable `TARGET_FILE` in the `Makefile`
-(wich is `target.sh` by default) with the name that your prefer;
-2. Run `make` from your project directory;
-3. The content of your `main.sh` file will be wrapped into the `main` function and will be invoked at the end of the
-script, so all of the functions defined in modules under the `lib` directory will be available in it;
+> Check out `README_bash-project.md` for details on how to build
