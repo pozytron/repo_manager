@@ -2,7 +2,8 @@
 renderIntro
 
 #select what's going to happen
-renderSection "WYBIERZ REPO DO KLONOWANIA:"
+renderSection "WYBIERZ REPO DO KLONOWANIA:                                                              "
+
 select repo in "${repos[@]}"; do
     case "$repo" in
     "Zakończ!")
@@ -12,11 +13,13 @@ select repo in "${repos[@]}"; do
     "")
         renderError "MUSISZ WYBRAĆ LICZBĘ Z ZAKRESU OD 1 DO ${#repos[@]}"
         continue
+
         ;;
     *)
         break
         ;;
     esac
+
 done
 
 #If everything is ok
@@ -26,6 +29,7 @@ mkdir ${currentGroup}
 cd ${currentGroup}
 
 for user in "${users[@]}"; do
+    renderHeader
     #If dir not exist
     if [ ! -d "$user" ]; then
         # echo -e "${On_Blue} Making directory ${bg_selected} $user ${Color_Off}"
@@ -47,10 +51,11 @@ for user in "${users[@]}"; do
         npm i
         renderAlert "INSTALUJĘ NPM'em..."
         cd ..
+        renderSuccess "GOTOWE !!!"
     fi
-    renderSuccess "$repoName DLA $user GOTOWE !!!"
     cd ..
 done
 
 # Koniec :)
 renderFooter
+renderSuccess "                                                                                         "

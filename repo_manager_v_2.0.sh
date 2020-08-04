@@ -98,12 +98,15 @@ function coloredEcho() {
 # `https://github.com/{user}/{currentGroup}_{repo}`
 
 # Github logins
-users=(AnnaWolska SlawomirJurak MaciejMajchrzak cerassus garryCold kamilkrysiak MiloszDziadosz mkazimie jarmatys piotrgra RafalDoranczyk KatBotkowska tomzdu Vladek23 ZWasilonek pielarz)
+# users=(AnnaWolska SlawomirJurak MaciejMajchrzak cerassus garryCold kamilkrysiak MiloszDziadosz mkazimie jarmatys piotrgra RafalDoranczyk KatBotkowska tomzdu Vladek23 ZWasilonek pielarz)
+users=(YaNusH tomaSh jesika brajan12)
 
 # List of repo names
-repos=("REPO_1" "REPO_2" "FSB_O_Exam" "QUIT")
+repos=("REPO_1" "REPO_2" "REPO_3" "QUIT")
+
 # Group signature
-currentGroup="WAR_FSB_O_05"
+# currentGroup="WAR_FSB_O_05"
+currentGroup="GROUP_EXAM_REPO_01"
 
 function renderIntro() {
     # echo -n "Enter a name:"
@@ -111,19 +114,19 @@ function renderIntro() {
     # echo "Your name is:" $NAME
     clear
     renderLine
-    renderInfo "       POZYTRON BASH TOOL                                   Based on Beniamin script     "
+    renderInfo "       REPO MANAGER                                                Hack away! :)         "
     renderLine
     renderDefault " TO JEST OK :)                                                                          "
     renderAlert " TO JEST ALERT                                                                           "
     renderError " TO JEST ERROR                                                                          "
     renderSuccess " TO JEST SUKCES :)                                                                       "
-    renderSection " SYGNATURA GRUPY: $currentGroup                                                           "
+
 }
 function renderHeader() {
     # echo -n "Enter a name:"
     # read NAME
     # echo "Your name is:" $NAME
-
+    clear
     renderLine
     renderInfo "       POZYTRON BASH TOOL                                   Based on Beniamin script     "
     renderLine
@@ -185,7 +188,8 @@ function main() {
   renderIntro
   
   #select what's going to happen
-  renderSection "WYBIERZ REPO DO KLONOWANIA:"
+  renderSection "WYBIERZ REPO DO KLONOWANIA:                                                              "
+  
   select repo in "${repos[@]}"; do
       case "$repo" in
       "Zakończ!")
@@ -195,11 +199,13 @@ function main() {
       "")
           renderError "MUSISZ WYBRAĆ LICZBĘ Z ZAKRESU OD 1 DO ${#repos[@]}"
           continue
+  
           ;;
       *)
           break
           ;;
       esac
+  
   done
   
   #If everything is ok
@@ -209,6 +215,7 @@ function main() {
   cd ${currentGroup}
   
   for user in "${users[@]}"; do
+      renderHeader
       #If dir not exist
       if [ ! -d "$user" ]; then
           # echo -e "${On_Blue} Making directory ${bg_selected} $user ${Color_Off}"
@@ -230,13 +237,14 @@ function main() {
           npm i
           renderAlert "INSTALUJĘ NPM'em..."
           cd ..
+          renderSuccess "GOTOWE !!!"
       fi
-      renderSuccess "$repoName DLA $user GOTOWE !!!"
       cd ..
   done
   
   # Koniec :)
   renderFooter
+  renderSuccess "                                                                                         "
 
 }
 

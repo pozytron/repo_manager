@@ -4,19 +4,19 @@ function renderIntro() {
     # echo "Your name is:" $NAME
     clear
     renderLine
-    renderInfo "       POZYTRON BASH TOOL                                   Based on Beniamin script     "
+    renderInfo "       REPO MANAGER                                                Hack away! :)         "
     renderLine
     renderDefault " TO JEST OK :)                                                                          "
     renderAlert " TO JEST ALERT                                                                           "
     renderError " TO JEST ERROR                                                                          "
     renderSuccess " TO JEST SUKCES :)                                                                       "
-    renderSection " SYGNATURA GRUPY: $currentGroup                                                           "
+
 }
 function renderHeader() {
     # echo -n "Enter a name:"
     # read NAME
     # echo "Your name is:" $NAME
-
+    clear
     renderLine
     renderInfo "       POZYTRON BASH TOOL                                   Based on Beniamin script     "
     renderLine
