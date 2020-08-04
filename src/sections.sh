@@ -1,4 +1,3 @@
-
 function renderHeader(){
     # echo -n "Enter a name:"
     # read NAME
