@@ -1,4 +1,4 @@
-TARGET_FILE = "repo_manager_v_2.0.sh"
+TARGET_FILE = "repo_manager.sh"
 PRJ_SRC = "${PWD}/src/main.sh"
 PRJ_LIB = $(shell ls -d ${PWD}/lib/*) # All files from ./lib
 

@@ -26,22 +26,25 @@ cd repos
 
 #If everything is ok
 repoName=${currentGroup}_${repo}
-# check if group catalog exists 
+# check if group catalog exists if not, create
 if [ ! -d "$currentGroup" ]; then
         coloredEcho "mkdir $currentGroup" Yellow
         mkdir $currentGroup
     fi
 
 for user in "${users[@]}"; do
+# Go into currentGroup catalog
 cd ${currentGroup}
     renderHeader $user
     #If dir not exist
     renderInfo "TWORZĘ KATALOG...                                                                        "
     renderLine
+# check if user catalog exists if not, create
     if [ ! -d "$user" ]; then
         coloredEcho "mkdir $repoName" Yellow
         mkdir $user
     fi
+    # enter user catalog
     cd $user
     pwd
     shortSleep
@@ -51,14 +54,17 @@ cd ${currentGroup}
     renderInfo "POBIERAM FORK...                                                                         "
     renderLine
     # timeout 10 echo " NEXT >> "
-    coloredEcho "git pull or git clone" Blue
+    # coloredEcho "git pull or git clone" Blue
     coloredEcho "$user/$repoName" Blue
-    #Clone if is not exist or pull if exist
+
     pwd
+    # Clone if catalog with repo not exist or pull if exist
     if [ ! -d "$repoName" ]; then
+    coloredEcho "git clone" Blue
         git clone https://github.com/$user/$repoName.git
 
     else
+    coloredEcho "git pull" Blue
         git pull
     fi
     mediumSleep

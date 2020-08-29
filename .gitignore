@@ -1,4 +1,4 @@
 repos/*
 
 # ignore output file:
-repo_manager_v_2.0.sh
+./repo_manager.sh
