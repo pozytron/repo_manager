@@ -2,12 +2,12 @@
 # `https://github.com/{user}/{currentGroup}_{repo}`
 
 # Github logins
-users=(AnnaWolska SlawomirJurak MaciejMajchrzak cerassus garryCold kamilkrysiak MiloszDziadosz mkazimie jarmatys piotrgra RafalDoranczyk KatBotkowska tomzdu Vladek23 ZWasilonek pielarz)
+users=(biallykacper lukasdebski memirsajlow agrygorkiewicz Volodymyr-gif Dora1001 Klimu2608 Natalia-Tomaszewska KrynickiJarek LukaszWiktorek Vearso ogi009)
 # users=(YaNusH tomaSh jesika brajan12)
 
 # List of repo names
-repos=("REPO_1" "REPO_2" "FSB_O_Exam" "QUIT")
+repos=("Prework_-_HTML" "Prework_-_JavaScript" "FSB_O_Exam" "QUIT")
 
 # Group signature
-currentGroup="WAR_FSB_O_05"
+currentGroup="WRO_FER_S_24"
 # currentGroup="GROUP_EXAM_REPO_01"

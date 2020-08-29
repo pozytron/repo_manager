@@ -1,11 +1,4 @@
-# Set Sleep to some value to see each step
-# Set Sleep to 0 to gain max speed :)
-function shortSleep() {
-    sleep 2
-}
-function mediumSleep() {
-    sleep 4
-}
+
 #  Renderuję nagłówek skryptu
 renderIntro
 
@@ -33,10 +26,14 @@ cd repos
 
 #If everything is ok
 repoName=${currentGroup}_${repo}
-mkdir ${currentGroup}
-cd ${currentGroup}
+# check if group catalog exists 
+if [ ! -d "$currentGroup" ]; then
+        coloredEcho "mkdir $currentGroup" Yellow
+        mkdir $currentGroup
+    fi
 
 for user in "${users[@]}"; do
+cd ${currentGroup}
     renderHeader $user
     #If dir not exist
     renderInfo "TWORZĘ KATALOG...                                                                        "

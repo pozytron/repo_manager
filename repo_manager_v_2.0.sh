@@ -98,16 +98,24 @@ function coloredEcho() {
 # `https://github.com/{user}/{currentGroup}_{repo}`
 
 # Github logins
-users=(AnnaWolska SlawomirJurak MaciejMajchrzak cerassus garryCold kamilkrysiak MiloszDziadosz mkazimie jarmatys piotrgra RafalDoranczyk KatBotkowska tomzdu Vladek23 ZWasilonek pielarz)
+users=(biallykacper lukasdebski memirsajlow agrygorkiewicz Volodymyr-gif Dora1001 Klimu2608 Natalia-Tomaszewska KrynickiJarek LukaszWiktorek Vearso ogi009)
 # users=(YaNusH tomaSh jesika brajan12)
 
 # List of repo names
-repos=("REPO_1" "REPO_2" "FSB_O_Exam" "QUIT")
+repos=("Prework_-_HTML" "Prework_-_JavaScript" "FSB_O_Exam" "QUIT")
 
 # Group signature
-currentGroup="WAR_FSB_O_05"
+currentGroup="WRO_FER_S_24"
 # currentGroup="GROUP_EXAM_REPO_01"
 
+# Set Sleep to some value to see each step
+# Set Sleep to 0 to gain max speed :)
+function shortSleep() {
+    sleep 2
+}
+function mediumSleep() {
+    sleep 4
+}
 function renderIntro() {
     # echo -n "Enter a name:"
     # read NAME
@@ -143,6 +151,7 @@ function renderSection() {
 }
 function renderLine() {
     renderInfo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
 }
 function renderScreen() {
     clear
@@ -156,6 +165,7 @@ function renderInfo() {
     # $1 text
     echo -e "$Black $On_Purple $1 ${Color_Off}                                                                      "
     # -e [kolorTekstu] [kolorTła] [Tekst] [parametr Text Reset ]
+
 }
 function renderDefault() {
     # function get's
@@ -184,14 +194,7 @@ function renderSuccess() {
 
 function main() {
 
-  # Set Sleep to some value to see each step
-  # Set Sleep to 0 to gain max speed :)
-  function shortSleep() {
-      sleep 2
-  }
-  function mediumSleep() {
-      sleep 4
-  }
+  
   #  Renderuję nagłówek skryptu
   renderIntro
   
@@ -219,10 +222,14 @@ function main() {
   
   #If everything is ok
   repoName=${currentGroup}_${repo}
-  mkdir ${currentGroup}
-  cd ${currentGroup}
+  # check if group catalog exists 
+  if [ ! -d "$currentGroup" ]; then
+          coloredEcho "mkdir $currentGroup" Yellow
+          mkdir $currentGroup
+      fi
   
   for user in "${users[@]}"; do
+  cd ${currentGroup}
       renderHeader $user
       #If dir not exist
       renderInfo "TWORZĘ KATALOG...                                                                        "
@@ -231,8 +238,6 @@ function main() {
           coloredEcho "mkdir $repoName" Yellow
           mkdir $user
       fi
-  
-      coloredEcho "mkdir or cd $user" Yellow
       cd $user
       pwd
       shortSleep

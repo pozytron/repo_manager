@@ -33,6 +33,7 @@ function renderSection() {
 }
 function renderLine() {
     renderInfo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
 }
 function renderScreen() {
     clear
@@ -46,6 +47,7 @@ function renderInfo() {
     # $1 text
     echo -e "$Black $On_Purple $1 ${Color_Off}                                                                      "
     # -e [kolorTekstu] [kolorTła] [Tekst] [parametr Text Reset ]
+
 }
 function renderDefault() {
     # function get's
